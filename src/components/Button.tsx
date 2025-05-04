@@ -1,8 +1,8 @@
-import React, {useMemo} from 'react';
+import React, {ReactElement, useMemo} from 'react';
 import {Pressable, StyleSheet} from 'react-native';
 import type {ColorValue, TextStyle, ViewStyle} from 'react-native';
 import Text from './Text';
-import Icon from './Icon';
+import Icon, {IconProps} from './Icon';
 import {TrashCanIcon} from './Icon/Icons';
 
 type ButtonProps = {
@@ -10,6 +10,7 @@ type ButtonProps = {
 	style?: ViewStyle;
 	textColor?: ColorValue;
 	textStyle?: TextStyle;
+	icon?: ReactElement<IconProps>;
 	children?: React.ReactNode;
 };
 
@@ -18,6 +19,7 @@ function Button({
 	style: styleProp,
 	textColor,
 	textStyle: textStyleProp,
+	icon,
 	children,
 }: ButtonProps) {
 	const style = useMemo<ViewStyle>(
@@ -36,7 +38,7 @@ function Button({
 
 	return (
 		<Pressable style={style}>
-			<Icon src={TrashCanIcon} />
+			{icon}
 			<Text style={textStyle}>{children}</Text>
 		</Pressable>
 	);

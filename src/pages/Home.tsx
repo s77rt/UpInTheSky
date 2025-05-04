@@ -1,5 +1,7 @@
 import {View} from 'react-native';
 import Button from '../components/Button';
+import Icon from '../components/Icon';
+import {TrashCanIcon} from '../components/Icon/Icons';
 
 function Home() {
 	return (
@@ -23,7 +25,8 @@ function Home() {
 				color="#9d0000"
 				textColor="white"
 				textStyle={{fontWeight: 'bold'}}
-				style={{borderWidth: 1, borderColor: '#ed6b6b'}}>
+				style={{borderWidth: 1, borderColor: '#ed6b6b'}}
+				icon={<Icon src={TrashCanIcon} />}>
 				Delete
 			</Button>
 			<Button color="#d0e3ff" textStyle={{fontWeight: 'bold'}}>

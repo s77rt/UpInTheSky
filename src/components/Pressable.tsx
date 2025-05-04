@@ -24,7 +24,7 @@ function Pressable({style, children, ...rest}: PressableProps) {
 	return (
 		<LinearGradient
 			style={linearGradientStyle}
-			colors={linearGradientColors ?? ['#FFFFFF00']}>
+			colors={linearGradientColors ?? ['#FFFFFF00', '#FFFFFF00']}>
 			<PressableRN style={pressableStyle} {...rest}>
 				{children}
 			</PressableRN>

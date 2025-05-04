@@ -24,7 +24,7 @@ function View({style, children, ...rest}: ViewProps) {
 	return (
 		<LinearGradient
 			style={linearGradientStyle}
-			colors={linearGradientColors ?? ['#FFFFFF00']}>
+			colors={linearGradientColors ?? ['#FFFFFF00', '#FFFFFF00']}>
 			<ViewRN style={viewStyle} {...rest}>
 				{children}
 			</ViewRN>

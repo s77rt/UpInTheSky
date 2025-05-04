@@ -14,9 +14,6 @@ export type BaseButtonProps = Omit<PressableProps, 'style'> & {
 
 export type Button = Pick<
 	BaseButtonProps,
-	| 'style'
-	| 'hoverStyle'
-	| 'pressStyle'
 	| 'onHoverIn'
 	| 'onHoverOut'
 	| 'onLongPress'

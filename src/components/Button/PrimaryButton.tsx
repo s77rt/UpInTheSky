@@ -1,23 +1,14 @@
 import React, {useMemo, useState} from 'react';
 import {StyleSheet} from 'react-native';
-import type {ViewStyle} from '../View';
 import type {Button} from './types';
 import BaseButton from './BaseButton';
 import Text from '../Text';
 import Icon from '../Icon';
 
-function PrimaryButton({style: styleProp, text, icon, ...rest}: Button) {
-	const style = useMemo<ViewStyle>(
-		() => ({
-			...styles.button,
-			...styleProp,
-		}),
-		[styleProp],
-	);
-
+function PrimaryButton({text, icon, ...rest}: Button) {
 	return (
 		<BaseButton
-			style={style}
+			style={styles.button}
 			text={text ? <Text style={styles.text}>{text}</Text> : undefined}
 			icon={icon ? <Icon src={icon} /> : undefined}
 			{...rest}

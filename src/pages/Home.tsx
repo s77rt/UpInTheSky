@@ -31,6 +31,8 @@ function Home() {
 				Open in Figma
 			</Button>
 			<PrimaryButton text="aaeza" icon={SparklesIcon} />
+			<PrimaryButton text="aaeza" icon={SparklesIcon} isHovered />
+			<PrimaryButton text="aaeza" icon={SparklesIcon} isPressed />
 			<Button
 				style={{
 					backgroundColor: '#9d0000',

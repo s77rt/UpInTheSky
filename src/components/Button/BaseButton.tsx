@@ -4,6 +4,7 @@ import type {ViewStyle} from '../View';
 import Pressable from '../Pressable';
 import type {BaseButtonProps} from './types';
 import type {GestureResponderEvent, MouseEvent} from 'react-native';
+import useControlledState from '../../hooks/useControlledState';
 
 function BaseButton({
 	style: styleProp,
@@ -13,12 +14,14 @@ function BaseButton({
 	onHoverOut: onHoverOutProp,
 	onPressIn: onPressInProp,
 	onPressOut: onPressOutProp,
+	isHovered: isHoveredProp,
+	isPressed: isPressedProp,
 	text,
 	icon,
 	...rest
 }: BaseButtonProps) {
-	const [isHovered, setIsHovered] = useState(false);
-	const [isPressed, setIsPressed] = useState(false);
+	const [isHovered, setIsHovered] = useControlledState(false, isHoveredProp);
+	const [isPressed, setIsPressed] = useControlledState(false, isPressedProp);
 
 	const style = useMemo<ViewStyle>(
 		() => ({

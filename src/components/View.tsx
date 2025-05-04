@@ -1,6 +1,11 @@
-import React, {useMemo} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 import {StyleSheet, View as ViewRN} from 'react-native';
-import type {ColorValue, ViewProps as ViewPropsRN} from 'react-native';
+import type {
+	ColorValue,
+	LayoutChangeEvent,
+	LayoutRectangle,
+	ViewProps as ViewPropsRN,
+} from 'react-native';
 import type {ViewStyle as ViewStyleRN} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import useLinearGradient from '../hooks/useLinearGradient';
@@ -17,18 +22,31 @@ export type ViewProps = Omit<ViewPropsRN, 'styile'> & {
  * Regular <View /> only better!
  * Supports linear gradient background
  */
-function View({style, children, ...rest}: ViewProps) {
+function View({style, children, onLayout: onLayoutProp, ...rest}: ViewProps) {
+	const [layout, setLayout] = useState<LayoutRectangle>();
 	const {viewStyle, linearGradientStyle, linearGradientColors} =
-		useLinearGradient(style);
+		useLinearGradient(style, layout);
+
+	const onLayout = useCallback(
+		(event: LayoutChangeEvent) => {
+			setLayout(event.nativeEvent.layout);
+			onLayoutProp?.(event);
+		},
+		[onLayoutProp],
+	);
 
 	return (
-		<LinearGradient
-			style={linearGradientStyle}
-			colors={linearGradientColors ?? ['#FFFFFF00', '#FFFFFF00']}>
-			<ViewRN style={viewStyle} {...rest}>
+		<ViewRN onLayout={onLayout} style={viewStyle} {...rest}>
+			<>
+				{!!linearGradientColors && (
+					<LinearGradient
+						style={linearGradientStyle}
+						colors={linearGradientColors}
+					/>
+				)}
 				{children}
-			</ViewRN>
-		</LinearGradient>
+			</>
+		</ViewRN>
 	);
 }
 

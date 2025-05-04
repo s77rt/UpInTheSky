@@ -1,8 +1,11 @@
 import {useMemo, useRef} from 'react';
 import type {ViewStyle} from '../components/View';
-import {StyleSheet} from 'react-native';
+import {LayoutRectangle, StyleSheet} from 'react-native';
 
-export default function useLinearGradient(style: ViewStyle | undefined) {
+export default function useLinearGradient(
+	style: ViewStyle | undefined,
+	layout: LayoutRectangle | undefined,
+) {
 	return useMemo(() => {
 		if (!Array.isArray(style?.backgroundColor)) {
 			return {
@@ -14,17 +17,19 @@ export default function useLinearGradient(style: ViewStyle | undefined) {
 
 		const viewStyle = StyleSheet.compose(style, {
 			backgroundColor: undefined,
-			borderRadius: undefined,
+			overflow: 'hidden',
 		});
 		const linearGradientStyle = {
-			borderRadius: style.borderRadius,
-			alignItems: style.alignItems,
-			justifyContent: style.justifyContent,
-		};
+			position: 'absolute',
+			top: 0,
+			left: 0,
+			width: layout?.width,
+			height: layout?.height,
+		} as const;
 		const linearGradientColors = style.backgroundColor as  // TODO: LinearGradient does not accept ColorValue type
 			| (string | number)[]
 			| undefined;
 
 		return {viewStyle, linearGradientStyle, linearGradientColors};
-	}, [style]);
+	}, [style, layout]);
 }

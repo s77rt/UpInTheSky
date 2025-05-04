@@ -1,10 +1,13 @@
-import React, {useMemo} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 import {StyleSheet, Pressable as PressableRN} from 'react-native';
-import type {PressableProps as PressablePropsRN} from 'react-native';
+import type {
+	LayoutChangeEvent,
+	LayoutRectangle,
+	PressableProps as PressablePropsRN,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import type {ViewStyle} from './View';
 import useLinearGradient from '../hooks/useLinearGradient';
-import View from './View';
 
 export type PressableProps = Omit<PressablePropsRN, 'styile'> & {
 	style?: ViewStyle;
@@ -14,21 +17,39 @@ export type PressableProps = Omit<PressablePropsRN, 'styile'> & {
  * Regular <Pressable /> only better!
  * Supports linear gradient background
  */
-function Pressable({style, children, ...rest}: PressableProps) {
+function Pressable({
+	style,
+	children,
+	onLayout: onLayoutProp,
+	...rest
+}: PressableProps) {
+	const [layout, setLayout] = useState<LayoutRectangle>();
 	const {
 		viewStyle: pressableStyle,
 		linearGradientStyle,
 		linearGradientColors,
-	} = useLinearGradient(style);
+	} = useLinearGradient(style, layout);
+
+	const onLayout = useCallback(
+		(event: LayoutChangeEvent) => {
+			setLayout(event.nativeEvent.layout);
+			onLayoutProp?.(event);
+		},
+		[onLayoutProp],
+	);
 
 	return (
-		<LinearGradient
-			style={linearGradientStyle}
-			colors={linearGradientColors ?? ['#FFFFFF00', '#FFFFFF00']}>
-			<PressableRN style={pressableStyle} {...rest}>
+		<PressableRN onLayout={onLayout} style={pressableStyle} {...rest}>
+			<>
+				{!!linearGradientColors && (
+					<LinearGradient
+						style={linearGradientStyle}
+						colors={linearGradientColors}
+					/>
+				)}
 				{children}
-			</PressableRN>
-		</LinearGradient>
+			</>
+		</PressableRN>
 	);
 }
 

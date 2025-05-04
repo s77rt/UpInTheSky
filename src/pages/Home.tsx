@@ -2,6 +2,7 @@ import {View} from 'react-native';
 import Button from '../components/Button';
 import Icon from '../components/Icon';
 import {TrashCanIcon} from '../components/Icon/Icons';
+import Text from '../components/Text';
 
 function Home() {
 	return (
@@ -22,13 +23,18 @@ function Home() {
 				Open in Figma
 			</Button>
 			<Button
-				color="#9d0000"
-				textColor="white"
-				textStyle={{fontWeight: 'bold'}}
-				style={{borderWidth: 1, borderColor: '#ed6b6b'}}
-				icon={<Icon src={TrashCanIcon} />}>
-				Delete
-			</Button>
+				style={{
+					backgroundColor: '#9d0000',
+					borderWidth: 1,
+					borderColor: '#ed6b6b',
+				}}
+				text={
+					<Text style={{color: 'white', fontWeight: 'bold'}}>
+						Delete
+					</Text>
+				}
+				icon={<Icon src={TrashCanIcon} />}
+			/>
 			<Button color="#d0e3ff" textStyle={{fontWeight: 'bold'}}>
 				Move Component
 			</Button>

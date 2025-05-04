@@ -1,7 +1,9 @@
 import React, {useMemo} from 'react';
 import {StyleSheet, Text as TextRN} from 'react-native';
-import type {TextProps, TextStyle} from 'react-native';
+import type {TextProps as TextPropsRN, TextStyle} from 'react-native';
 import {getDefaultTextStyle} from '../libs/StyleUtils';
+
+export type TextProps = TextPropsRN;
 
 // Regular <Text /> but with custom default style
 function Text({style: styleProp, children, ...rest}: TextProps) {

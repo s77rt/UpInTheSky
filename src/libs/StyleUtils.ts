@@ -1,5 +1,7 @@
 import type {TextStyle} from 'react-native';
 
+// TODO: Move to Text
+
 function getDefaultTextStyle(
 	fontWeight: TextStyle['fontWeight'] = 'regular',
 	fontStyle: TextStyle['fontStyle'] = 'normal',

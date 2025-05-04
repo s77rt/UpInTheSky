@@ -1,45 +1,28 @@
 import React, {ReactElement, useMemo} from 'react';
 import {Pressable, StyleSheet} from 'react-native';
-import type {ColorValue, TextStyle, ViewStyle} from 'react-native';
-import Text from './Text';
-import Icon, {IconProps} from './Icon';
-import {TrashCanIcon} from './Icon/Icons';
+import type {ViewStyle} from 'react-native';
+import type {TextProps} from './Text';
+import type {IconProps} from './Icon';
 
 type ButtonProps = {
-	color?: ColorValue;
 	style?: ViewStyle;
-	textColor?: ColorValue;
-	textStyle?: TextStyle;
+	text?: ReactElement<TextProps>;
 	icon?: ReactElement<IconProps>;
-	children?: React.ReactNode;
 };
 
-function Button({
-	color = 'blue', // TODO: gradiant background
-	style: styleProp,
-	textColor,
-	textStyle: textStyleProp,
-	icon,
-	children,
-}: ButtonProps) {
+function Button({style: styleProp, text, icon}: ButtonProps) {
 	const style = useMemo<ViewStyle>(
 		() => ({
 			...styles.button,
-			backgroundColor: color,
 			...styleProp,
 		}),
-		[color, styleProp],
-	);
-
-	const textStyle = useMemo<TextStyle>(
-		() => ({color: textColor, ...textStyleProp}),
-		[textColor, textStyleProp],
+		[styleProp],
 	);
 
 	return (
 		<Pressable style={style}>
 			{icon}
-			<Text style={textStyle}>{children}</Text>
+			{text}
 		</Pressable>
 	);
 }

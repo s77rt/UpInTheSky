@@ -13,10 +13,22 @@ function Home() {
 				backgroundColor: '#001537',
 				flex: 1,
 			}}>
-			<Button>BUTTON</Button>
-			<Button variant="secondary">Open in Figma</Button>
-			<Button variant="danger">Delete</Button>
-			<Button>Move Component</Button>
+			<Button textColor="white" textStyle={{fontWeight: 'semibold'}}>
+				BUTTON
+			</Button>
+			<Button color="#d0e3ff" textStyle={{fontWeight: 'bold'}}>
+				Open in Figma
+			</Button>
+			<Button
+				color="#9d0000"
+				textColor="white"
+				textStyle={{fontWeight: 'bold'}}
+				style={{borderWidth: 1, borderColor: '#ed6b6b'}}>
+				Delete
+			</Button>
+			<Button color="#d0e3ff" textStyle={{fontWeight: 'bold'}}>
+				Move Component
+			</Button>
 		</View>
 	);
 }

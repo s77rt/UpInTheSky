@@ -93,7 +93,9 @@ function getDefaultTextStyle(
 			console.warn('Unsupported font style');
 	}
 
-	return {fontFamily, fontWeight, fontStyle};
+	const fontSize = 12;
+
+	return {fontFamily, fontWeight, fontStyle, fontSize};
 }
 
 export {getDefaultTextStyle};

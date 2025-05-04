@@ -1,48 +1,28 @@
 import React, {useMemo} from 'react';
 import {StyleSheet, Text as TextRN} from 'react-native';
-import type {ColorValue, TextStyle} from 'react-native';
+import type {TextProps, TextStyle} from 'react-native';
+import {getDefaultTextStyle} from '../libs/StyleUtils';
 
-type TextProps = {
-	color?: ColorValue;
-	fontSize?: number;
-	fontWeight?: 'normal' | 'semiBold' | 'bold';
-	children?: React.ReactNode;
-};
+// Regular <Text /> but with custom default style
+function Text({style: styleProp, children, ...rest}: TextProps) {
+	const style = useMemo(() => {
+		const flattenedStyleProp = StyleSheet.flatten(styleProp) as
+			| TextStyle
+			| undefined; // Flattened style could be undefined due to a bug: https://github.com/facebook/react-native/issues/46293
+		return StyleSheet.compose(
+			getDefaultTextStyle(
+				flattenedStyleProp?.fontWeight,
+				flattenedStyleProp?.fontStyle,
+			),
+			styleProp,
+		);
+	}, [styleProp]);
 
-function Text({
-	color = 'white',
-	fontSize = 12,
-	fontWeight = 'normal',
-	children,
-}: TextProps) {
-	const style = useMemo<TextStyle>(
-		() => ({
-			color,
-			fontSize,
-			...styles[`fontWeight:${fontWeight}`],
-		}),
-		[color, fontWeight],
+	return (
+		<TextRN style={style} {...rest}>
+			{children}
+		</TextRN>
 	);
-
-	return <TextRN style={style}>{children}</TextRN>;
 }
-
-const styles = StyleSheet.create({
-	'fontWeight:normal': {
-		fontFamily: 'Montserrat-Regular',
-		fontWeight: 400,
-		fontStyle: 'normal',
-	},
-	'fontWeight:semiBold': {
-		fontFamily: 'Montserrat-SemiBold',
-		fontWeight: 600,
-		fontStyle: 'normal',
-	},
-	'fontWeight:bold': {
-		fontFamily: 'Montserrat-Bold',
-		fontWeight: 700,
-		fontStyle: 'normal',
-	},
-});
 
 export default React.memo(Text);

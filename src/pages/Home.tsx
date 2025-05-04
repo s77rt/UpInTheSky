@@ -16,9 +16,16 @@ function Home() {
 				backgroundColor: '#001537',
 				flex: 1,
 			}}>
-			<Button textColor="white" textStyle={{fontWeight: 'semibold'}}>
-				BUTTON
-			</Button>
+			<Button
+				style={{
+					backgroundColor: ['#2246ee', '#2b7fff'],
+				}}
+				text={
+					<Text style={{color: 'white', fontWeight: 'semibold'}}>
+						BUTTON
+					</Text>
+				}
+			/>
 			<Button color="#d0e3ff" textStyle={{fontWeight: 'bold'}}>
 				Open in Figma
 			</Button>

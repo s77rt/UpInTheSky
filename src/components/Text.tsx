@@ -5,7 +5,9 @@ import {getDefaultTextStyle} from '../libs/StyleUtils';
 
 export type TextProps = TextPropsRN;
 
-// Regular <Text /> but with custom default style
+/*
+ * Regular <Text /> but with custom default style
+ */
 function Text({style: styleProp, children, ...rest}: TextProps) {
 	const style = useMemo(() => {
 		const flattenedStyleProp = StyleSheet.flatten(styleProp) as

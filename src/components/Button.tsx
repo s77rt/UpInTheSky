@@ -1,8 +1,9 @@
 import React, {ReactElement, useMemo} from 'react';
 import {Pressable, StyleSheet} from 'react-native';
-import type {ViewStyle} from 'react-native';
 import type {TextProps} from './Text';
 import type {IconProps} from './Icon';
+import LinearGradient from 'react-native-linear-gradient';
+import View, {ViewStyle} from './View';
 
 type ButtonProps = {
 	style?: ViewStyle;
@@ -20,22 +21,22 @@ function Button({style: styleProp, text, icon}: ButtonProps) {
 	);
 
 	return (
-		<Pressable style={style}>
+		<View style={style}>
 			{icon}
 			{text}
-		</Pressable>
+		</View>
 	);
 }
 
 const styles = StyleSheet.create({
 	button: {
-		borderRadius: 4,
 		paddingHorizontal: 36,
 		paddingVertical: 8,
 		alignItems: 'center',
 		justifyContent: 'center',
 		flexDirection: 'row',
 		gap: 4,
+		borderRadius: 4,
 	},
 });
 

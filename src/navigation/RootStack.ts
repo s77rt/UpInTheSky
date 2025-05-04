@@ -8,6 +8,7 @@ const RootStack = createNativeStackNavigator({
 			screen: Home,
 		},
 	},
+	screenOptions: {headerShown: false},
 });
 
 export default RootStack;

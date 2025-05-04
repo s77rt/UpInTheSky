@@ -2,6 +2,8 @@ import React, {useMemo} from 'react';
 import {Pressable, StyleSheet} from 'react-native';
 import type {ColorValue, TextStyle, ViewStyle} from 'react-native';
 import Text from './Text';
+import Icon from './Icon';
+import {TrashCanIcon} from './Icon/Icons';
 
 type ButtonProps = {
 	color?: ColorValue;
@@ -34,6 +36,7 @@ function Button({
 
 	return (
 		<Pressable style={style}>
+			<Icon src={TrashCanIcon} />
 			<Text style={textStyle}>{children}</Text>
 		</Pressable>
 	);
@@ -46,6 +49,8 @@ const styles = StyleSheet.create({
 		paddingVertical: 8,
 		alignItems: 'center',
 		justifyContent: 'center',
+		flexDirection: 'row',
+		gap: 4,
 	},
 });
 

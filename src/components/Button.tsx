@@ -3,6 +3,7 @@ import {StyleSheet} from 'react-native';
 import type {TextProps} from './Text';
 import type {IconProps} from './Icon';
 import View, {ViewStyle} from './View';
+import Pressable from './Pressable';
 
 type ButtonProps = {
 	style?: ViewStyle;
@@ -20,10 +21,10 @@ function Button({style: styleProp, text, icon}: ButtonProps) {
 	);
 
 	return (
-		<View style={style}>
+		<Pressable style={style}>
 			{icon}
 			{text}
-		</View>
+		</Pressable>
 	);
 }
 

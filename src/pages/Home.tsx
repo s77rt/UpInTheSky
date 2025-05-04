@@ -1,7 +1,7 @@
 import {View} from 'react-native';
 import Button from '../components/Button/BaseButton';
 import Icon from '../components/Icon';
-import {TrashCanIcon} from '../components/Icon/Icons';
+import {SparklesIcon, TrashCanIcon} from '../components/Icon/Icons';
 import Text from '../components/Text';
 import PrimaryButton from '../components/Button/PrimaryButton';
 
@@ -30,7 +30,7 @@ function Home() {
 			<Button color="#d0e3ff" textStyle={{fontWeight: 'bold'}}>
 				Open in Figma
 			</Button>
-			<PrimaryButton text="aaeza" />
+			<PrimaryButton text="aaeza" icon={SparklesIcon} />
 			<Button
 				style={{
 					backgroundColor: '#9d0000',

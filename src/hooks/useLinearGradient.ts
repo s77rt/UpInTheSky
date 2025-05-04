@@ -14,6 +14,7 @@ export default function useLinearGradient(style: ViewStyle | undefined) {
 
 		const viewStyle = StyleSheet.compose(style, {
 			backgroundColor: undefined,
+			borderRadius: undefined,
 		});
 		const linearGradientStyle = {
 			borderRadius: style.borderRadius,

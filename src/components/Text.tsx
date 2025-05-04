@@ -4,14 +4,21 @@ import type {ColorValue, TextStyle} from 'react-native';
 
 type TextProps = {
 	color?: ColorValue;
+	fontSize?: number;
 	fontWeight?: 'normal' | 'semiBold' | 'bold';
 	children?: React.ReactNode;
 };
 
-function Text({color = 'white', fontWeight = 'normal', children}: TextProps) {
+function Text({
+	color = 'white',
+	fontSize = 12,
+	fontWeight = 'normal',
+	children,
+}: TextProps) {
 	const style = useMemo<TextStyle>(
 		() => ({
 			color,
+			fontSize,
 			...styles[`fontWeight:${fontWeight}`],
 		}),
 		[color, fontWeight],

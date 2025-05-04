@@ -6,6 +6,8 @@ import {ViewStyle} from '../View';
 
 export type BaseButtonProps = Omit<PressableProps, 'style'> & {
 	style?: ViewStyle;
+	hoverStyle?: ViewStyle;
+	pressStyle?: ViewStyle;
 	text?: ReactElement<TextProps>;
 	icon?: ReactElement<IconProps>;
 };
@@ -13,6 +15,8 @@ export type BaseButtonProps = Omit<PressableProps, 'style'> & {
 export type Button = Pick<
 	BaseButtonProps,
 	| 'style'
+	| 'hoverStyle'
+	| 'pressStyle'
 	| 'onHoverIn'
 	| 'onHoverOut'
 	| 'onLongPress'

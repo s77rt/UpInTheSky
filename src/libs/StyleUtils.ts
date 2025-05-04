@@ -4,6 +4,8 @@ function getDefaultTextStyle(
 	fontWeight: TextStyle['fontWeight'] = 'regular',
 	fontStyle: TextStyle['fontStyle'] = 'normal',
 ): TextStyle {
+	const fontSize = 12;
+
 	let fontFamilyNormal;
 	let fontFamilyItalic;
 
@@ -75,7 +77,7 @@ function getDefaultTextStyle(
 		default:
 			fontFamilyNormal = 'Montserrat-Regular';
 			fontFamilyItalic = 'Montserrat-Italic';
-			console.warn('Unsupported font weight');
+			console.warn('Unsupported font weight', fontWeight);
 	}
 
 	let fontFamily;
@@ -90,10 +92,8 @@ function getDefaultTextStyle(
 
 		default:
 			fontFamily = fontFamilyNormal;
-			console.warn('Unsupported font style');
+			console.warn('Unsupported font style', fontStyle);
 	}
-
-	const fontSize = 12;
 
 	return {fontFamily, fontWeight, fontStyle, fontSize};
 }

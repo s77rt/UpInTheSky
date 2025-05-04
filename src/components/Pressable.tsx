@@ -5,7 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import type {ViewStyle} from './View';
 import useLinearGradient from '../hooks/useLinearGradient';
 
-export type PressableProps = PressablePropsRN & {
+export type PressableProps = Omit<PressablePropsRN, 'styile'> & {
 	style?: ViewStyle;
 };
 

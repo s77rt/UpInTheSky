@@ -9,7 +9,7 @@ export type ViewStyle = ViewStyleRN & {
 	backgroundColor?: ColorValue | ColorValue[];
 };
 
-export type ViewProps = ViewPropsRN & {
+export type ViewProps = Omit<ViewPropsRN, 'styile'> & {
 	style?: ViewStyle;
 };
 

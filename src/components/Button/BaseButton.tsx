@@ -1,17 +1,10 @@
 import React, {ReactElement, useMemo} from 'react';
 import {StyleSheet} from 'react-native';
-import type {TextProps} from './Text';
-import type {IconProps} from './Icon';
-import View, {ViewStyle} from './View';
-import Pressable from './Pressable';
+import type {ViewStyle} from '../View';
+import Pressable from '../Pressable';
+import type {BaseButtonProps} from './types';
 
-type ButtonProps = {
-	style?: ViewStyle;
-	text?: ReactElement<TextProps>;
-	icon?: ReactElement<IconProps>;
-};
-
-function Button({style: styleProp, text, icon}: ButtonProps) {
+function BaseButton({style: styleProp, text, icon, ...rest}: BaseButtonProps) {
 	const style = useMemo<ViewStyle>(
 		() => ({
 			...styles.button,
@@ -21,7 +14,7 @@ function Button({style: styleProp, text, icon}: ButtonProps) {
 	);
 
 	return (
-		<Pressable style={style}>
+		<Pressable style={style} {...rest}>
 			{icon}
 			{text}
 		</Pressable>
@@ -40,4 +33,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default React.memo(Button);
+export default React.memo(BaseButton);

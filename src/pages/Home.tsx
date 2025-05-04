@@ -34,8 +34,8 @@ function Home() {
 			<Button
 				style={{
 					backgroundColor: '#9d0000',
-					borderWidth: 1,
-					borderColor: '#ed6b6b',
+					outlineColor: 'white',
+					outlineWidth: 1,
 				}}
 				text={
 					<Text style={{color: 'white', fontWeight: 'bold'}}>

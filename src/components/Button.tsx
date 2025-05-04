@@ -1,8 +1,7 @@
 import React, {ReactElement, useMemo} from 'react';
-import {Pressable, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import type {TextProps} from './Text';
 import type {IconProps} from './Icon';
-import LinearGradient from 'react-native-linear-gradient';
 import View, {ViewStyle} from './View';
 
 type ButtonProps = {

@@ -1,9 +1,7 @@
-import React, {ReactElement, useMemo} from 'react';
+import React, {useMemo} from 'react';
 import {StyleSheet, View as ViewRN} from 'react-native';
 import type {ColorValue, ViewProps as ViewPropsRN} from 'react-native';
 import type {ViewStyle as ViewStyleRN} from 'react-native';
-import type {TextProps} from './Text';
-import type {IconProps} from './Icon';
 import LinearGradient from 'react-native-linear-gradient';
 
 export type ViewStyle = ViewStyleRN & {

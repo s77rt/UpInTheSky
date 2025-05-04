@@ -24,12 +24,12 @@ function Button({
 			backgroundColor: color,
 			...styleProp,
 		}),
-		[color],
+		[color, styleProp],
 	);
 
 	const textStyle = useMemo<TextStyle>(
 		() => ({color: textColor, ...textStyleProp}),
-		[textColor],
+		[textColor, textStyleProp],
 	);
 
 	return (

@@ -20,24 +20,15 @@ export type ViewProps = Omit<ViewPropsRN, 'styile'> & {
 function View({style, children, ...rest}: ViewProps) {
 	const {viewStyle, linearGradientStyle, linearGradientColors} =
 		useLinearGradient(style);
-	const shouldUseLinearGradient = !!linearGradientColors;
-
-	if (shouldUseLinearGradient) {
-		return (
-			<LinearGradient
-				style={linearGradientStyle}
-				colors={linearGradientColors}>
-				<ViewRN style={viewStyle} {...rest}>
-					{children}
-				</ViewRN>
-			</LinearGradient>
-		);
-	}
 
 	return (
-		<ViewRN style={viewStyle} {...rest}>
-			{children}
-		</ViewRN>
+		<LinearGradient
+			style={linearGradientStyle}
+			colors={linearGradientColors ?? ['#FFFFFF00']}>
+			<ViewRN style={viewStyle} {...rest}>
+				{children}
+			</ViewRN>
+		</LinearGradient>
 	);
 }
 

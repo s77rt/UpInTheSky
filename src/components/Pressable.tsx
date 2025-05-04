@@ -4,6 +4,7 @@ import type {PressableProps as PressablePropsRN} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import type {ViewStyle} from './View';
 import useLinearGradient from '../hooks/useLinearGradient';
+import View from './View';
 
 export type PressableProps = Omit<PressablePropsRN, 'styile'> & {
 	style?: ViewStyle;
@@ -19,24 +20,15 @@ function Pressable({style, children, ...rest}: PressableProps) {
 		linearGradientStyle,
 		linearGradientColors,
 	} = useLinearGradient(style);
-	const shouldUseLinearGradient = !!linearGradientColors;
-
-	if (shouldUseLinearGradient) {
-		return (
-			<LinearGradient
-				style={linearGradientStyle}
-				colors={linearGradientColors}>
-				<PressableRN style={pressableStyle} {...rest}>
-					{children}
-				</PressableRN>
-			</LinearGradient>
-		);
-	}
 
 	return (
-		<PressableRN style={pressableStyle} {...rest}>
-			{children}
-		</PressableRN>
+		<LinearGradient
+			style={linearGradientStyle}
+			colors={linearGradientColors ?? ['#FFFFFF00']}>
+			<PressableRN style={pressableStyle} {...rest}>
+				{children}
+			</PressableRN>
+		</LinearGradient>
 	);
 }
 

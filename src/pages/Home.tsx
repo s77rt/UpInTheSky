@@ -3,7 +3,7 @@ import Button from '../components/Button';
 
 function Home() {
 	return (
-		<View style={{padding: 20}}>
+		<View style={{padding: 20, flexDirection: 'row'}}>
 			<Button />
 		</View>
 	);

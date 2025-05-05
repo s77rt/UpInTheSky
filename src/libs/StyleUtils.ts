@@ -1,16 +1,13 @@
 import type {TextStyle} from 'react-native';
 
-// TODO: Move to Text
-
-function getDefaultTextStyle(
+// TODO: Move to Text (?)
+function getDefaultFontStyles(
 	fontWeight: TextStyle['fontWeight'] = 'regular',
 	fontStyle: TextStyle['fontStyle'] = 'normal',
 ): TextStyle {
 	const fontSize = 12;
 
-	let fontFamilyNormal;
-	let fontFamilyItalic;
-
+	let fontFamilyNormal, fontFamilyItalic;
 	switch (fontWeight) {
 		case 100:
 		case '100':
@@ -100,4 +97,4 @@ function getDefaultTextStyle(
 	return {fontFamily, fontWeight, fontStyle, fontSize};
 }
 
-export {getDefaultTextStyle};
+export {getDefaultFontStyles};

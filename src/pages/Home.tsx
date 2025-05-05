@@ -1,9 +1,11 @@
 import {View} from 'react-native';
 import Button from '../components/Button/BaseButton';
 import Icon from '../components/Icon';
-import {SparklesIcon, TrashCanIcon} from '../components/Icon/Icons';
+import {FigmaIcon, SparklesIcon, TrashCanIcon} from '../components/Icon/Icons';
 import Text from '../components/Text';
 import PrimaryButton from '../components/Button/PrimaryButton';
+import DangerButton from '../components/Button/DangerButton';
+import SecondaryButton from '../components/Button/SecondaryButton';
 
 function Home() {
 	return (
@@ -33,6 +35,8 @@ function Home() {
 			<PrimaryButton text="aaeza" icon={SparklesIcon} />
 			<PrimaryButton text="aaeza" icon={SparklesIcon} isHovered />
 			<PrimaryButton text="aaeza" icon={SparklesIcon} isPressed />
+			<DangerButton text="Delete" icon={TrashCanIcon} />
+			<SecondaryButton text="Figma" icon={FigmaIcon} />
 			<Button
 				style={{
 					backgroundColor: '#9d0000',

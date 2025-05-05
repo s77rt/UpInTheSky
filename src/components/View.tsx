@@ -1,5 +1,5 @@
-import React, {useCallback, useMemo, useState} from 'react';
-import {StyleSheet, View as ViewRN} from 'react-native';
+import React, {useCallback, useState} from 'react';
+import {View as ViewRN} from 'react-native';
 import type {
 	ColorValue,
 	LayoutChangeEvent,
@@ -10,7 +10,7 @@ import type {ViewStyle as ViewStyleRN} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import useLinearGradient from '../hooks/useLinearGradient';
 
-export type ViewStyle = ViewStyleRN & {
+export type ViewStyle = Omit<ViewStyleRN, 'backgroundColor'> & {
 	backgroundColor?: ColorValue | ColorValue[];
 };
 

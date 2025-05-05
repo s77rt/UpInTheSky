@@ -1,5 +1,6 @@
 import {useMemo, useRef} from 'react';
 import type {ViewStyle} from '../components/View';
+import type {ViewStyle as ViewStyleRN} from 'react-native';
 import {LayoutRectangle, StyleSheet} from 'react-native';
 
 export default function useLinearGradient(
@@ -9,17 +10,18 @@ export default function useLinearGradient(
 	return useMemo(() => {
 		if (!Array.isArray(style?.backgroundColor)) {
 			return {
-				viewStyle: style,
+				viewStyle: style as ViewStyleRN,
 				linearGradientStyle: undefined,
 				linearGradientColors: undefined,
 			};
 		}
 
-		const viewStyle = StyleSheet.compose(style, {
+		const viewStyle: ViewStyleRN = {
+			...style,
 			backgroundColor: undefined,
 			overflow: 'hidden',
-		});
-		const linearGradientStyle = {
+		};
+		const linearGradientStyle: ViewStyleRN = {
 			position: 'absolute',
 			top: 0,
 			left: 0,

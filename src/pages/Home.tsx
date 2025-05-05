@@ -1,60 +1,52 @@
-import {View} from 'react-native';
-import Button from '../components/Button/BaseButton';
+import {StyleSheet, View} from 'react-native';
 import Icon from '../components/Icon';
 import {FigmaIcon, SparklesIcon, TrashCanIcon} from '../components/Icon/Icons';
 import Text from '../components/Text';
 import PrimaryButton from '../components/Button/PrimaryButton';
 import DangerButton from '../components/Button/DangerButton';
 import SecondaryButton from '../components/Button/SecondaryButton';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import PageWrapper from '../components/PageWrapper';
+import BaseButton from '../components/Button/BaseButton';
 
 function Home() {
 	return (
-		<View
-			style={{
-				paddingHorizontal: 20,
-				paddingVertical: 100,
-				flexDirection: 'row',
-				gap: 8,
-				flexWrap: 'wrap',
-				backgroundColor: '#001537',
-				flex: 1,
-			}}>
-			<Button
-				style={{
-					backgroundColor: ['#2246ee', '#2b7fff'],
-				}}
-				text={
-					<Text style={{color: 'white', fontWeight: 'semibold'}}>
-						BUTTON
-					</Text>
-				}
-			/>
-			<Button color="#d0e3ff" textStyle={{fontWeight: 'bold'}}>
-				Open in Figma
-			</Button>
-			<PrimaryButton text="aaeza" icon={SparklesIcon} />
-			<PrimaryButton text="aaeza" icon={SparklesIcon} isHovered />
-			<PrimaryButton text="aaeza" icon={SparklesIcon} isPressed />
-			<DangerButton text="Delete" icon={TrashCanIcon} />
-			<SecondaryButton text="Figma" icon={FigmaIcon} />
-			<Button
-				style={{
-					backgroundColor: '#9d0000',
-					outlineColor: 'white',
-					outlineWidth: 1,
-				}}
-				text={
-					<Text style={{color: 'white', fontWeight: 'bold'}}>
-						Delete
-					</Text>
-				}
-				icon={<Icon src={TrashCanIcon} />}
-			/>
-			<Button color="#d0e3ff" textStyle={{fontWeight: 'bold'}}>
-				Move Component
-			</Button>
-		</View>
+		<PageWrapper style={styles.container}>
+			<Text style={styles.title}>UpInTheSky</Text>
+			<View style={styles.list}>
+				<PrimaryButton text="Primary Button" />
+				<SecondaryButton text="Secondary Button" />
+				<DangerButton text="Danger Button" />
+				<BaseButton
+					style={styles.figmaButton}
+					text={
+						<Text style={styles.figmaButtonText}>Figma Design</Text>
+					}
+				/>
+			</View>
+		</PageWrapper>
 	);
 }
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center',
+		gap: 32,
+	},
+	list: {
+		gap: 16,
+	},
+	title: {
+		fontSize: 32,
+		color: 'white',
+	},
+
+	// @ts-expect-error
+	// Missing types for array backgroundColor
+	figmaButton: {backgroundColor: ['red', 'yellow']},
+	figmaButtonText: {fontSize: 20, fontWeight: 'black'},
+});
 
 export default Home;

@@ -1,5 +1,5 @@
-import React, {useCallback, useMemo, useState} from 'react';
-import {StyleSheet, Pressable as PressableRN} from 'react-native';
+import React, {useCallback, useState} from 'react';
+import {Pressable as PressableRN} from 'react-native';
 import type {
 	LayoutChangeEvent,
 	LayoutRectangle,

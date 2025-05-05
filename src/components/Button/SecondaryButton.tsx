@@ -1,10 +1,9 @@
-import React, {useMemo, useState} from 'react';
+import React from 'react';
 import {StyleSheet} from 'react-native';
 import type {Button} from './types';
 import BaseButton from './BaseButton';
 import Text from '../Text';
 import Icon from '../Icon';
-import {Background} from '@react-navigation/elements';
 
 function SecondaryButton({text, icon, ...rest}: Button) {
 	return (

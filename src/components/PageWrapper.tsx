@@ -49,8 +49,9 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
 	header: {
-		paddingHorizontal: 24,
 		flexDirection: 'row',
+		paddingHorizontal: 24,
+		paddingVertical: 4,
 	},
 });
 
